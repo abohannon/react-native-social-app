@@ -4,15 +4,14 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import firebase from 'firebase';
 import { StyleSheet, Text, View } from 'react-native';
+import Router from './src/Router';
 import reducers from './src/reducers';
-import { Header } from './src/components/common';
-import LoginForm from './src/components/LoginForm';
 
 const componentStyles = {
 
 };
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     // Initialize Firebase
@@ -38,13 +37,12 @@ export default class App extends Component {
 
     return (
       <Provider store={store}>
-        <View style={componentStyles.containerStyle}>
-          <Header title="Header" />
-          <LoginForm />
-        </View>
+        <Router />
       </Provider>
     );
   }
 }
+
+export default App;
 
 console.disableYellowBox = true;

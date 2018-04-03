@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { Button, Input } from './common';
 
 const componentStyles = {
@@ -30,6 +31,7 @@ class LoginForm extends Component {
           onChangeText={password => this.setState({ password })}
         />
         <Button onPress={() => console.log('Pressed!')}>Login</Button>
+        <Text onPress={() => Actions.signup()}>Need an account? Sign up.</Text>
       </View>
     );
   }
