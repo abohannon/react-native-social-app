@@ -6,17 +6,19 @@ import {
 } from './types';
 
 
-export const createUser = ({ firstName, email, password }) => async (dispatch) => {
+export const createUser = ({ firstName, email, password }) => (dispatch) => {
   dispatch({ type: CREATE_USER_PENDING });
-  try {
-    const res = await firebase.auth().createUserWithEmailAndPassword(email, password);
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      dispatch({ type: CREATE_USER_SUCCESS, payload: 'User created' });
+    }).catch((err) => {
+      const error = {
+        errorCode: err.code,
+        errorMessage: err.message,
+      };
 
-    if (res.status !== 200) throw res.data;
-
-    dispatch({ type: CREATE_USER_SUCCESS, payload: res.data });
-  } catch (err) {
-    dispatch({ type: CREATE_USER_FAIL, payload: err });
-  }
+      dispatch({ type: CREATE_USER_FAIL, payload: error });
+    });
 };
 
 export const loginUser = () => {};
