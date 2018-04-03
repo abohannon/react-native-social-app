@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Animated, View, Text } from 'react-native';
+import { connect } from 'react-redux'
 import { Button, Input } from './common';
+import { createUser } from '../actions';
+
 
 const componentStyles = {
   containerStyle: {
@@ -34,13 +37,12 @@ class SignupForm extends Component {
           label="Password"
           onChangeText={password => this.setState({ password })}
         />
-        <Button onPress={() => console.log('Pressed!')}>Sign up</Button>
-     
+        <Button onPress={() => this.props.createUser(this.state)}>Sign up</Button>
           <Text>Have an account? Login.</Text>
-   
       </Animated.View>
     );
   }
 }
 
-export default SignupForm;
+const mapStateToProps = state => ({ auth: state.auth })
+export default connect(mapStateToProps, { createUser })(SignupForm);
