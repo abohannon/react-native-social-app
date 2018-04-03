@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import {
   CREATE_USER_PENDING,
   CREATE_USER_SUCCESS,
@@ -19,6 +20,8 @@ export const createUser = ({ firstName, email, password }) => async (dispatch) =
       type: CREATE_USER_SUCCESS,
       payload: user,
     });
+    // send new user to ListDisplay component after success
+    Actions.listDisplay();
   } catch (err) {
     const error = {
       errorCode: err.code,

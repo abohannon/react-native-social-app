@@ -24,6 +24,7 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         message: action.payload,
         error: '',
+        isAuthenticated: true,
       };
       return { ...state, ...newState };
     }

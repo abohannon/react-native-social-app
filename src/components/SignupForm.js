@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux'
 import { Button, Input } from './common';
 import { createUser } from '../actions';
@@ -21,7 +21,7 @@ class SignupForm extends Component {
   render() {
     const { containerStyle } = componentStyles
     return (
-      <Animated.View style={containerStyle}>
+      <View style={containerStyle}>
         <Text>
           Signup Form
         </Text>
@@ -39,7 +39,7 @@ class SignupForm extends Component {
         />
         <Button onPress={() => this.props.createUser(this.state)}>Sign up</Button>
           <Text>Have an account? Login.</Text>
-      </Animated.View>
+      </View>
     );
   }
 }

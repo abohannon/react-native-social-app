@@ -3,13 +3,8 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import firebase from 'firebase';
-import { StyleSheet, Text, View } from 'react-native';
-import Router from './src/Router';
 import reducers from './src/reducers';
-
-const componentStyles = {
-
-};
+import AppRoot from './src/AppRoot';
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +32,7 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-        <Router />
+        <AppRoot />
       </Provider>
     );
   }
