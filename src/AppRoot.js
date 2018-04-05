@@ -3,13 +3,12 @@ import { Provider, connect } from 'react-redux';
 import { View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Router from './Router';
+import { fetchUser } from './actions';
 
 class AppRoot extends Component {
   componentDidMount() {
     // TODO: Update in favor of firebase's onAuthStateChanged(user)?
-    this.props.auth.isAuthenticated
-      ? Actions.listDisplay()
-      : Actions.auth();
+    this.props.fetchUser();
   }
 
   render() {
@@ -21,5 +20,5 @@ class AppRoot extends Component {
 
 const mapStateToProps = state => ({ auth: state.auth });
 
-export default connect(mapStateToProps)(AppRoot);
+export default connect(mapStateToProps, { fetchUser })(AppRoot);
 

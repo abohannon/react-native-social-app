@@ -23,7 +23,7 @@ class SignupForm extends Component {
     return (
       <View style={containerStyle}>
         <Text>
-          Signup Form
+          Please Signup
         </Text>
         <Input
           label="First Name"
@@ -38,7 +38,6 @@ class SignupForm extends Component {
           onChangeText={password => this.setState({ password })}
         />
         <Button onPress={() => this.props.createUser(this.state)}>Sign up</Button>
-          <Text>Have an account? Login.</Text>
       </View>
     );
   }

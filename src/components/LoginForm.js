@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { loginUser } from '../actions'
 import { Button, Input } from './common';
 
 const componentStyles = {
@@ -20,7 +22,7 @@ class LoginForm extends Component {
     return (
       <View style={containerStyle}>
         <Text>
-          LOGIN FORM
+          Please Login
         </Text>
         <Input
           label="Email"
@@ -30,11 +32,11 @@ class LoginForm extends Component {
           label="Password"
           onChangeText={password => this.setState({ password })}
         />
-        <Button onPress={() => console.log('Pressed!')}>Login</Button>
+        <Button onPress={() => this.props.loginUser(this.state)}>Login</Button>
         <Text onPress={() => Actions.signup()}>Need an account? Sign up.</Text>
       </View>
     );
   }
 }
 
-export default LoginForm;
+export default connect(null, { loginUser })(LoginForm);
