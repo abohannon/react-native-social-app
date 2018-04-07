@@ -40,4 +40,5 @@ class App extends Component {
 
 export default App;
 
+// disable warning notification in simulator
 console.disableYellowBox = true;

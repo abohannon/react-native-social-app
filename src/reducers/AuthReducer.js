@@ -1,3 +1,4 @@
+import { getItemFromAsyncStorage } from '../helpers';
 import {
   CREATE_USER_PENDING,
   CREATE_USER_SUCCESS,
@@ -11,23 +12,25 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  loading: false,
   message: '',
   error: '',
   isAuthenticated: false,
+  fetchingUser: false,
+  creatingUser: false,
+  loggingInUser: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CREATE_USER_PENDING: {
       const newState = {
-        loading: true,
+        creatingUser: true,
       };
       return { ...state, ...newState };
     }
     case CREATE_USER_SUCCESS: {
       const newState = {
-        loading: false,
+        creatingUser: false,
         message: action.payload,
         error: '',
         isAuthenticated: true,
@@ -36,7 +39,7 @@ export default (state = INITIAL_STATE, action) => {
     }
     case CREATE_USER_FAIL: {
       const newState = {
-        loading: false,
+        creatingUser: false,
         message: '',
         error: action.payload,
       };
@@ -44,13 +47,13 @@ export default (state = INITIAL_STATE, action) => {
     }
     case LOGIN_USER_PENDING: {
       const newState = {
-        loading: true,
+        loggingInUser: true,
       };
       return { ...state, ...newState };
     }
     case LOGIN_USER_SUCCESS: {
       const newState = {
-        loading: false,
+        loggingInUser: false,
         message: action.payload,
         error: '',
         isAuthenticated: true,
@@ -59,7 +62,7 @@ export default (state = INITIAL_STATE, action) => {
     }
     case LOGIN_USER_FAIL: {
       const newState = {
-        loading: false,
+        loggingInUser: false,
         error: action.payload,
         isAuthenticated: false,
       };
@@ -67,13 +70,14 @@ export default (state = INITIAL_STATE, action) => {
     }
     case FETCH_USER_PENDING: {
       const newState = {
-        loading: true,
+        fetchingUser: true,
+        isAuthenticated: false,
       };
       return { ...state, ...newState };
     }
     case FETCH_USER_SUCCESS: {
       const newState = {
-        loading: false,
+        fetchingUser: false,
         isAuthenticated: true,
         user: action.payload,
       };
@@ -81,7 +85,7 @@ export default (state = INITIAL_STATE, action) => {
     }
     case FETCH_USER_FAIL: {
       const newState = {
-        loading: false,
+        fetchingUser: false,
         isAuthenticated: false,
         user: '',
         error: action.payload,

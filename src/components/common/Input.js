@@ -24,7 +24,9 @@ const componentStyles = {
 
 const Input = (props) => {
   const { containerStyle, labelStyle, inputStyle } = componentStyles;
-  const { label, value, onChangeText } = props;
+  const {
+    label, value, onChangeText, secureTextEntry,
+  } = props;
   return (
     <View style={containerStyle}>
       <Text style={labelStyle}>{label}</Text>
@@ -32,6 +34,7 @@ const Input = (props) => {
         value={value}
         onChangeText={onChangeText}
         style={inputStyle}
+        secureTextEntry={secureTextEntry}
       />
     </View>
   );

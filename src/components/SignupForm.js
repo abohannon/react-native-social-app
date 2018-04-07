@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { connect } from 'react-redux'
-import { Button, Input } from './common';
+import { connect } from 'react-redux';
+import { Button, Input, Spinner } from './common';
 import { createUser } from '../actions';
 
 
 const componentStyles = {
   containerStyle: {
     height: 400,
-  }
-}
+  },
+};
 
 class SignupForm extends Component {
   state = {
@@ -18,8 +18,18 @@ class SignupForm extends Component {
     password: '',
   }
 
+  renderButton() {
+    if (this.props.loading) {
+      return <Spinner size="small" />;
+    }
+
+    return (
+      <Button onPress={() => this.props.createUser(this.state)}>Sign up</Button>
+    );
+  }
+
   render() {
-    const { containerStyle } = componentStyles
+    const { containerStyle } = componentStyles;
     return (
       <View style={containerStyle}>
         <Text>
@@ -36,12 +46,15 @@ class SignupForm extends Component {
         <Input
           label="Password"
           onChangeText={password => this.setState({ password })}
+          secureTextEntry
         />
-        <Button onPress={() => this.props.createUser(this.state)}>Sign up</Button>
+
+        {this.renderButton()}
+
       </View>
     );
   }
 }
 
-const mapStateToProps = state => ({ auth: state.auth })
+const mapStateToProps = state => ({ loading: state.auth.creatingUser });
 export default connect(mapStateToProps, { createUser })(SignupForm);
