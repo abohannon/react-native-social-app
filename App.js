@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './src/reducers';
-import Main from './src/Main';
+import Routes from './src/Routes';
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-        <Main />
+        <Routes />
       </Provider>
     );
   }
