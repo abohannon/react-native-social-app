@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import Router from './Router';
 import { fetchUser } from './actions';
 
-class AppRoot extends Component {
+class Main extends Component {
   componentDidMount() {
     // TODO: Update in favor of firebase's onAuthStateChanged(user)?
     this.props.fetchUser();
@@ -13,12 +13,12 @@ class AppRoot extends Component {
 
   render() {
     return (
-      <Router />
+      <Router auth={this.props.auth} />
     );
   }
 }
 
 const mapStateToProps = state => ({ auth: state.auth });
 
-export default connect(mapStateToProps, { fetchUser })(AppRoot);
+export default connect(mapStateToProps, { fetchUser })(Main);
 

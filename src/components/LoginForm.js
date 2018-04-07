@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { loginUser } from '../actions'
-import { Button, Input } from './common';
+import { Button, Input, Spinner } from './common';
 
 const componentStyles = {
   containerStyle: {
@@ -32,7 +32,11 @@ class LoginForm extends Component {
           label="Password"
           onChangeText={password => this.setState({ password })}
         />
-        <Button onPress={() => this.props.loginUser(this.state)}>Login</Button>
+
+        <Button onPress={() => this.props.loginUser(this.state)}>
+          Login
+      </Button>
+
         <Text onPress={() => Actions.signup()}>Need an account? Sign up.</Text>
       </View>
     );
