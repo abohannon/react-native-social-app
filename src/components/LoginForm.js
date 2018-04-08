@@ -4,13 +4,7 @@ import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { loginUser } from '../actions';
-import { Button, Input, Spinner } from './common';
-
-const componentStyles = {
-  containerStyle: {
-    height: 400,
-  },
-};
+import { Card, CardSection, Button, Input, Spinner } from './common';
 
 class LoginForm extends Component {
   static propTypes = {
@@ -35,24 +29,28 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { containerStyle } = componentStyles;
     return (
-      <View style={containerStyle}>
-        <Text>
-          Please Login
-        </Text>
-        <Input
-          label="Email"
-          onChangeText={email => this.setState({ email })}
-        />
-        <Input
-          label="Password"
-          onChangeText={password => this.setState({ password })}
-          secureTextEntry
-        />
-
-        {this.renderButton()}
-
+      <View>
+        <Card>
+          <CardSection>
+            <Input
+              label="Email"
+              onChangeText={email => this.setState({ email })}
+              placeholder="user@gmail.com"
+            />
+          </CardSection>
+          <CardSection>
+            <Input
+              label="Password"
+              onChangeText={password => this.setState({ password })}
+              placeholder="password"
+              secureTextEntry
+            />
+          </CardSection>
+          <CardSection>
+            {this.renderButton()}
+          </CardSection>
+        </Card>
         <Text onPress={() => Actions.signup()}>Need an account? Sign up.</Text>
       </View>
     );

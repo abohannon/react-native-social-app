@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, Input, Spinner } from './common';
+import { Card, CardSection, Button, Input, Spinner } from './common';
 import { createUser } from '../actions';
-
-
-const componentStyles = {
-  containerStyle: {
-    height: 400,
-  },
-};
 
 class SignupForm extends Component {
   state = {
@@ -29,29 +22,34 @@ class SignupForm extends Component {
   }
 
   render() {
-    const { containerStyle } = componentStyles;
     return (
-      <View style={containerStyle}>
-        <Text>
-          Please Signup
-        </Text>
-        <Input
-          label="First Name"
-          onChangeText={firstName => this.setState({ firstName })}
-        />
-        <Input
-          label="Email"
-          onChangeText={email => this.setState({ email })}
-        />
-        <Input
-          label="Password"
-          onChangeText={password => this.setState({ password })}
-          secureTextEntry
-        />
-
-        {this.renderButton()}
-
-      </View>
+      <Card>
+        <CardSection>
+          <Input
+            label="First Name"
+            onChangeText={firstName => this.setState({ firstName })}
+            placeholder="John"
+          />
+        </CardSection>
+        <CardSection>
+          <Input
+            label="Email"
+            onChangeText={email => this.setState({ email })}
+            placeholder="user@gmail.com"
+          />
+        </CardSection>
+        <CardSection>
+          <Input
+            label="Password"
+            onChangeText={password => this.setState({ password })}
+            placeholder="password"
+            secureTextEntry
+          />
+        </CardSection>
+        <CardSection>
+          {this.renderButton()}
+        </CardSection>
+      </Card>
     );
   }
 }

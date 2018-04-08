@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { BLACK } from '../../constants/style';
 
-const componentStyles = {
+const styles = {
   textStyle: {
     alignSelf: 'center',
     color: BLACK,
@@ -16,11 +16,12 @@ const componentStyles = {
     padding: 10,
     marginLeft: 5,
     marginRight: 5,
+    flex: 1,
   },
 };
 
 const Button = (props) => {
-  const { buttonStyle, textStyle } = componentStyles;
+  const { buttonStyle, textStyle } = styles;
   const { style, onPress } = props;
   return (
     <TouchableOpacity
