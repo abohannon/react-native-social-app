@@ -16,10 +16,13 @@ class Nearby extends Component {
   }
 
   render() {
+    const { location } = this.props;
+    const currentLocation = location ? location.coords : {};
     return (
       <View>
         <Card>
-          <Text>List Item</Text>
+          <Text>{currentLocation.longitude}</Text>
+          <Text>{currentLocation.latitude}</Text>
         </Card>
         <Card>
           <Text>List Item</Text>
@@ -38,4 +41,6 @@ class Nearby extends Component {
   }
 }
 
-export default connect(null, { fetchUserLocation })(Nearby);
+const mapStateToProps = state => ({ location: state.user.location });
+
+export default connect(mapStateToProps, { fetchUserLocation })(Nearby);
