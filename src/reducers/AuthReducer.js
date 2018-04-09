@@ -1,4 +1,3 @@
-import { getItemFromAsyncStorage } from '../helpers';
 import {
   CREATE_USER_PENDING,
   CREATE_USER_SUCCESS,

@@ -9,3 +9,7 @@ export const LOGIN_USER_FAIL = 'login_user_fail';
 export const FETCH_USER_PENDING = 'fetch_user_pending';
 export const FETCH_USER_SUCCESS = 'fetch_user_success';
 export const FETCH_USER_FAIL = 'fetch_user_fail';
+
+export const USER_LOCATION_PENDING = 'user_location_pending';
+export const USER_LOCATION_SUCCESS = 'user_location_success';
+export const USER_LOCATION_FAIL = 'user_location_fail';
