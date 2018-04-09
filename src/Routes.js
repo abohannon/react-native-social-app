@@ -7,7 +7,7 @@ import { getItemFromAsyncStorage } from './helpers';
 import { fetchUser } from './actions';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
-import ListDisplay from './components/ListDisplay';
+import Nearby from './components/Nearby';
 import { Spinner } from './components/common';
 
 class Routes extends Component {
@@ -35,7 +35,7 @@ class Routes extends Component {
             <Scene key="signup" component={SignupForm} title="Create Account" />
           </Scene>
           <Scene key="private">
-            <Scene key="listDisplay" component={ListDisplay} title="List" />
+            <Scene key="nearby" component={Nearby} title="Nearby" />
           </Scene>
         </Scene>
       </Router>

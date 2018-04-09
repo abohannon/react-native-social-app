@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import firebase from 'firebase';
 import { Card } from './common';
 
-const ListDisplay = () => (
+const Nearby = () => (
   <View>
     <Card>
       <Text>List Item</Text>
@@ -23,4 +23,4 @@ const ListDisplay = () => (
   </View>
 );
 
-export default ListDisplay;
+export default Nearby;
