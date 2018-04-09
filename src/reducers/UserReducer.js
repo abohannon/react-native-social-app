@@ -2,12 +2,13 @@ import {
   USER_LOCATION_PENDING,
   USER_LOCATION_SUCCESS,
   USER_LOCATION_FAIL,
-} from '../actions';
+} from '../actions/types';
 
 const INITIAL_STATE = {
   user: null,
   locatingUser: false,
   location: null,
+  error: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
